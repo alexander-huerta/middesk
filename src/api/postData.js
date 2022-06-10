@@ -1,7 +1,7 @@
 //import {API_KEY} from './apiKey.js'
 const axios = require('axios');
 
-export const addBusiness = (businessData) => {
+export const addBusiness = (businessData, cb) => {
 
   const postConfig = {
     method: 'post',
@@ -13,10 +13,13 @@ export const addBusiness = (businessData) => {
     data : businessData
   };
 
-  axios(postConfig)
-  .then(function (apiResponse) {
-    console.log(apiResponse.data);
+  return axios(postConfig)
+  .then((apiResponse) => {
     return apiResponse.data;
+  })
+  .then((businessSummary) => {
+    console.log('yoo', businessSummary.id)
+    cb(businessSummary.id)
   })
   .catch(function (error) {
     console.log(error);

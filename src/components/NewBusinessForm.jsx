@@ -1,110 +1,68 @@
-import { useState } from 'react';
 import '../App.css';
 import { addBusiness } from '../api/postData.js';
 
-const NewBusinessForm = ({businessObject, changeView}) => {
+const NewBusinessForm = ({businessObjectSummary, changeView, businessId, changeId}) => {
   // const handleChange = (e) => {
     //   console.log(e.target.value)
     //   setName(e.target.value)
     // }
 
-  const [formSubmitted, setFormStatus] = useState(false)
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    setFormStatus(true);
-    addBusiness(businessObject)
+    addBusiness(businessObjectSummary, (id) => {
+      changeView('businessProfileSummary')
+      changeId(id)
+    })
   }
 
-  const handleClick = (e) => {
-    changeView('businessProfile')
-  }
+  return (
+    <div className="form-box">
+      <h5> Add a business </h5>
+      <form
+        className = "submitBusinessForm"
+        onSubmit={handleSubmit}>
 
-  if(!formSubmitted) {
-    return (
-      <div >
-        <h1> Add a business </h1>
-        <form
-          className = "submitBusinessForm"
-          onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          value="Business Name"/>
 
-          <label>
-            Business Name:
-          <input
-            type="text"
-            name="name"
-            value="Mid Desk"/>
-          </label>
+        <input
+          type="text"
+          value="Tax Payer ID"/>
 
-          <label>
-            Tax Payer ID:
-          <input
-            type="text"
-            value="123410000"/>
-          </label>
+        <input
+          type="text"
+          value="Website URL"/>
 
-          <label>
-            Website:
-          <input
-            type="text"
-            value="https://www.middesk.com"/>
-          </label>
+        <input
+          type="text"
+          value="Address Line 1"/>
 
-          <label>
-            Address Line 1:
-          <input
-            type="text"
-            value="577 Howard St"/>
-          </label>
+        <input
+          type="text"
+          value="Address Line 2"/>
 
-          <label>
-            Address Line 2:
-          <input
-            type="text"
-            value="Suite 400"/>
-          </label>
+        <input
+          type="text"
+          value="City"/>
 
-          <label>
-            City:
-          <input
-            type="text"
-            value="San Fransisco"/>
-          </label>
+        <input
+          type="text"
+          value="State"/>
 
-          <label>
-            State:
-          <input
-            type="text"
-            value="CA"/>
-          </label>
+        <input
+          type="text"
+          value="Postal Code"/>
 
-          <label>
-            Postal Code:
-          <input
-            type="text"
-            value="94105"/>
-          </label>
+        <input
+          type="submit"
+          value="Submit"
+          className="button"/>
 
-          <input
-            type="submit"
-            value="POST BUSINESS REQUEST to API"
-            className="button"/>
-
-        </form>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <h3> Business Added Successfuly </h3>
-        <button
-          onClick={handleClick}>
-          View business profile
-        </button>
-      </div>
-    )
-  }
+      </form>
+    </div>
+  );
 }
 
 export default NewBusinessForm;

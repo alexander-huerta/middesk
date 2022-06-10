@@ -1,34 +1,63 @@
 import { useState } from 'react';
 import './App.css';
-import {API_KEY} from './apiKey.js'
+import NewBusinessForm from './components/NewBusinessForm.jsx';
+import BusinessProfileSummary from './components/BusinessProfileSummary.jsx';
+import BusinessProfile from './components/BusinessProfile.jsx';
+import {businessObjectSummary, businessObject} from './dummyData.js'
 
 const App = () => {
+  //Dynamically update State of business object - from API response
 
-  const [name, setName] = useState('');
-
-  const handleChange = (e) => {
-    setName(e.target.value)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(name);
-    setName('');
+  const [businessId, setId] = useState()
+  const changeId = (newId) => {
+    setId(newId)
   }
 
 
-  return (
-    <div className="App">
-      <h1> Loan Underwriting </h1>
-      <form onSubmit={handleSubmit}>
-       <label>
-         Business Name:
-       <input type="text" name="name" onChange={handleChange} value={name}/>
-       </label>
-      <input type="submit" value="Submit" />
-      </form>
-    </div>
-  );
+
+  const [view, setView] = useState('newBusinessForm')
+  const changeView = (newView) => {
+    setView(newView)
+  }
+
+  if(view === 'newBusinessForm') {
+    return (
+      <div className="App">
+        <NewBusinessForm
+          changeView={changeView}
+          businessObjectSummary={businessObjectSummary}
+          businessId={businessId}
+          changeId={changeId}
+          />
+      </div>
+    );
+  } else if(view === 'businessProfileSummary') {
+    return (
+      <div className="App">
+        <BusinessProfileSummary
+          businessObjectSummary={businessObjectSummary}
+          changeView={changeView}
+          businessId={businessId}
+        />
+     </div>
+    );
+  } else if(view === 'businessProfile') {
+    return (
+      <div className="App">
+      <BusinessProfile
+        businessObject={businessObject}
+        businessId={businessId}
+        />
+   </div>
+    )
+  }
 }
 
 export default App;
+
+
+
+  // const [businessObject, setBusinessObject] = useState()
+  // const updateBusinessObject = (busObj) => {
+  //   setBusinessObject(businessObject => ({...businessObject, [businessObject]: busObj}))
+  // }

@@ -1,8 +1,65 @@
 .App {
-  text-align: center;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-
+  margin: auto;
+  width: 50%;
+  background-color:rgb(150, 208, 232);
+}
+.button, button {
+  font-size: 18px;
+  background-color: #e7e7e7;
+  border: 0;
+  border-radius: 20px;
+  color: #F55A00;
+  display: inline-block;
+}
+.button:hover, button:hover {
+  background-color: rgb(245, 245, 78);
+  transition: 1s background ease;
 }
 
+/* NewBusinessForm */
+.form-box{
+  min-width: 80%;
+  margin: 0vw;
+  padding: 5vw ;
+  position:relative;
+}
+.form-box h5{
+  font-size: 35px ;
+  text-align: center;
+  color: #F55A00;
+  margin: 0 0 .5vh 0;
+}
+.form-box input{
+  display: block;
+  width: 100%;
+  padding: .5rem .8rem .5rem .8rem;
+  margin: .9vw 0 ;
+  border:1px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+/* StatusBar */
+.statusBar {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin: auto;
+  width: 50%;
+}
+.open, .pending, .in_review, .in_audit {
+  border: 1px solid #F55A00;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 4px;
+}
+.statusOpen {
+  background-color: rgb(99, 220, 99);
+}
+
+/* BusinessProfile */
+p {
+  font-size:20px ;
+  text-align:left;
+  color: #F55A00;
+  padding-left:15px;
+}

@@ -2,33 +2,36 @@ import '../App.css';
 import { getBusiness } from '../api/getData.js';
 import StatusBar from './StatusBar.jsx'
 
-const BusinessProfile = ({businessObject, changeView}) => {
+const OnSuccessfulAdd = ({businessObject,  businessId}) => {
 
+
+    //either call API again
+    //or use Webhooks.
   const checkStatus = () => {
-    getBusiness()
+    getBusiness(businessId)
+    //call get business. pass callback changeView
   }
 
+  const hasBusinessData = businessObject.name.length;
+  let status = businessObject.status;
+
   return (
-    <div>
-      <StatusBar/>
+    <div className="form-box">
+      <StatusBar status={status}/>
 
-      {businessObject.name.length > 0 &&
-      <h4> {businessObject.name}</h4>}
+      {hasBusinessData > 0 &&
+      <p> {businessObject.name}</p>}
+     <h2>ALL DATA</h2>
+     {JSON.stringify(businessObject)}
 
-      {businessObject.name.length > 0 &&
-      <h4> {businessObject.tin.tin}</h4>
-      }
-
-      {businessObject.name.length > 0 &&
-      <h4> {businessObject.website.url}</h4>
-      }
-
-      <button onClick={checkStatus}>
-        Trigger GET for full business object
-      </button>
+      <input
+            type="submit"
+            value="Refresh"
+            className="button"
+            onClick={checkStatus}/>
 
     </div>
   );
 }
 
-export default BusinessProfile;
+export default OnSuccessfulAdd;
