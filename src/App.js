@@ -6,19 +6,11 @@ import BusinessProfile from './components/BusinessProfile.jsx';
 import {businessObjectSummary, businessObject} from './dummyData.js'
 
 const App = () => {
-  //Dynamically update State of business object - from API response
+  const [businessId, setId] = useState();
+  const changeId = (newId) =>  setId(newId);
+  const [view, setView] = useState('newBusinessForm');
+  const changeView = (newView) => setView(newView);
 
-  const [businessId, setId] = useState()
-  const changeId = (newId) => {
-    setId(newId)
-  }
-
-
-
-  const [view, setView] = useState('newBusinessForm')
-  const changeView = (newView) => {
-    setView(newView)
-  }
 
   if(view === 'newBusinessForm') {
     return (
@@ -54,10 +46,3 @@ const App = () => {
 }
 
 export default App;
-
-
-
-  // const [businessObject, setBusinessObject] = useState()
-  // const updateBusinessObject = (busObj) => {
-  //   setBusinessObject(businessObject => ({...businessObject, [businessObject]: busObj}))
-  // }

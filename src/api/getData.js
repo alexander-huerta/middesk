@@ -1,7 +1,6 @@
 //import {API_KEY} from './apiKey.js'
 const axios = require('axios');
 
-
 export const getBusiness = (businessId, cb) => {
   var getConfig = {
     method: 'get',
@@ -17,7 +16,7 @@ console.log(getConfig.url)
     console.log(apiResponse.data);
     return apiResponse.data;
   })
-  .then(() =>{
+  .then(() => {
     if(cb) cb()
   })
   .catch(error => console.log(error));

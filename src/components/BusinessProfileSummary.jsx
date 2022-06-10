@@ -3,10 +3,8 @@ import { getBusiness } from '../api/getData.js';
 import StatusBar from './StatusBar.jsx'
 
 const BusinessProfileSummary = ({businessObjectSummary, changeView, businessId}) => {
-
   const checkStatus = () => {
     getBusiness(businessId, () => changeView('businessProfile'))
-    //call get business. pass callback changeView
   }
   const hasBusinessData = businessObjectSummary.name.length;
 
@@ -31,7 +29,6 @@ const BusinessProfileSummary = ({businessObjectSummary, changeView, businessId})
             value="View full business profile"
             className="button"
             onClick={checkStatus}/>
-
     </div>
   );
 }

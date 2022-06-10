@@ -18,7 +18,7 @@ export const addBusiness = (businessData, cb) => {
     return apiResponse.data;
   })
   .then((businessSummary) => {
-    console.log('yoo', businessSummary.id)
+    console.log('at axios post req, 2nd then', businessSummary.id)
     cb(businessSummary.id)
   })
   .catch(function (error) {
