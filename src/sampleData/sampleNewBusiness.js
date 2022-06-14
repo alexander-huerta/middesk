@@ -1,0 +1,2 @@
+
+export const newBusiness = {"name":"Middesk+Inc","tin":{"tin":"123410000"},"website":{"url":"https://www.middesk.com"},"addresses":[{"address_line1":"577+Howard+St","address_line2":"Suite+400","city":"San+Francisco","state":"CA","postal_code":"94105"}]}

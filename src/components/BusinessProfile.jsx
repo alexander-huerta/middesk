@@ -2,7 +2,7 @@ import '../App.css';
 import { getBusiness } from '../api/getData.js';
 import StatusBar from './StatusBar.jsx'
 
-const OnSuccessfulAdd = ({businessObject,  businessId}) => {
+const OnSuccessfulAdd = ({businessObject, businessId}) => {
  //either call API repeatedly or use Webhooks.
   const checkStatus = () => {
     getBusiness(businessId)
@@ -15,8 +15,7 @@ const OnSuccessfulAdd = ({businessObject,  businessId}) => {
       <StatusBar status={status}/>
 
       {hasBusinessData > 0 &&
-      <p> {businessObject.name}</p>}
-     <h2>ALL DATA</h2>
+      <p>All Data for {businessObject.name}</p>}
      {JSON.stringify(businessObject)}
 
       <input

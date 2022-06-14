@@ -10,6 +10,7 @@
   border-radius: 20px;
   color: #F55A00;
   display: inline-block;
+  width: 70%;
 }
 .button:hover, button:hover {
   background-color: rgb(245, 245, 78);
@@ -18,7 +19,7 @@
 
 /* NewBusinessForm */
 .form-box{
-  min-width: 80%;
+  width: 50%;
   margin: 0vw;
   padding: 5vw ;
   position:relative;

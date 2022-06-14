@@ -1,4 +1,4 @@
-//import {API_KEY} from './apiKey.js'
+import {API_KEY} from './apiKey.js'
 const axios = require('axios');
 
 export const addBusiness = (businessData, cb) => {
@@ -7,8 +7,9 @@ export const addBusiness = (businessData, cb) => {
     method: 'post',
     url: 'https://api-sandbox.middesk.com/v1/businesses',
     headers: {
+      Accept: 'application/json',
       'Content-Type': 'application/json',
-      'Authorization': 'Basic bWtfdGVzdF84N2FjOGI1YWU2Mjg5ZDQ5MGIxNTllOGM6:'
+      Authorization: `Bearer ${API_KEY}}`
     },
     data : businessData
   };
@@ -18,13 +19,9 @@ export const addBusiness = (businessData, cb) => {
     return apiResponse.data;
   })
   .then((businessSummary) => {
-    console.log('at axios post req, 2nd then', businessSummary.id)
-    cb(businessSummary.id)
+    cb(businessSummary)
   })
   .catch(function (error) {
     console.log(error);
   });
 }
-
-
-

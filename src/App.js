@@ -3,23 +3,21 @@ import './App.css';
 import NewBusinessForm from './components/NewBusinessForm.jsx';
 import BusinessProfileSummary from './components/BusinessProfileSummary.jsx';
 import BusinessProfile from './components/BusinessProfile.jsx';
-import {businessObjectSummary, businessObject} from './dummyData.js'
 
 const App = () => {
-  const [businessId, setId] = useState();
-  const changeId = (newId) =>  setId(newId);
   const [view, setView] = useState('newBusinessForm');
-  const changeView = (newView) => setView(newView);
+  const [businessId, setId] = useState();
+  const [businessObject, setBusinessObject] = useState();
+  const [businessObjectSummary, setBusinessObjectSummary] = useState();
 
 
   if(view === 'newBusinessForm') {
     return (
       <div className="App">
         <NewBusinessForm
-          changeView={changeView}
-          businessObjectSummary={businessObjectSummary}
-          businessId={businessId}
-          changeId={changeId}
+          setView={setView}
+          setId={setId}
+          setBusinessObjectSummary={setBusinessObjectSummary}
           />
       </div>
     );
@@ -27,9 +25,10 @@ const App = () => {
     return (
       <div className="App">
         <BusinessProfileSummary
-          businessObjectSummary={businessObjectSummary}
-          changeView={changeView}
+          setView={setView}
+          setBusinessObject={setBusinessObject}
           businessId={businessId}
+          businessObjectSummary={businessObjectSummary}
         />
      </div>
     );

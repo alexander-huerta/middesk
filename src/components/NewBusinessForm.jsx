@@ -1,17 +1,16 @@
 import '../App.css';
 import { addBusiness } from '../api/postData.js';
+import { newBusiness } from '../sampleData/sampleNewBusiness.js'
 
-const NewBusinessForm = ({businessObjectSummary, changeView, businessId, changeId}) => {
-  // const handleChange = (e) => {
-    //   console.log(e.target.value)
-    //   setName(e.target.value)
-    // }
+const NewBusinessForm = ({setView, setId, setBusinessObjectSummary}) => {
+  //Instead of capturing the form data, the app is currently working with a sample business being imported as newBusiness
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addBusiness(businessObjectSummary, (id) => {
-      changeView('businessProfileSummary')
-      changeId(id)
+    addBusiness(newBusiness, (objectSummary) => {
+      setView('businessProfileSummary')
+      setId(objectSummary.id)
+      setBusinessObjectSummary(objectSummary)
     })
   }
 
