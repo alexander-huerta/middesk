@@ -1,7 +1,7 @@
 
 ## Middesk Take home
 
-The purpose of this web app is to interact with the Middesk API. In order to
+The purpose of this web app is to interact with the Middesk API.
 
 ## Getting Started
 1) Fork and then Clone this repo locally.
