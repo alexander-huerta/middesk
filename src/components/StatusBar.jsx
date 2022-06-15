@@ -1,10 +1,12 @@
 import '../App.css';
 
 const StatusBar = ({status}) => {
+
   let openStyling = {};
   let pendindStyling = {};
   let inAuditStyling = {};
   let inReviewStyling = {};
+
   if(!status) openStyling = {backgroundColor: "green"}
   if(status === 'open') openStyling = {backgroundColor: "green"}
   if(status === 'pending') pendindStyling = {backgroundColor: "green"}

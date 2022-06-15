@@ -5,11 +5,10 @@ import BusinessProfileSummary from './components/BusinessProfileSummary.jsx';
 import BusinessProfile from './components/BusinessProfile.jsx';
 
 const App = () => {
-  const [view, setView] = useState('newBusinessForm');
+  const [view, setView] = useState();
   const [businessId, setId] = useState();
   const [businessObject, setBusinessObject] = useState();
   const [businessObjectSummary, setBusinessObjectSummary] = useState();
-
 
   if(view === 'newBusinessForm') {
     return (
@@ -38,6 +37,7 @@ const App = () => {
       <BusinessProfile
         businessObject={businessObject}
         businessId={businessId}
+        setBusinessObject={setBusinessObject}
         />
    </div>
     )

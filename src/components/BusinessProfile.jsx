@@ -2,11 +2,14 @@ import '../App.css';
 import { getBusiness } from '../api/getData.js';
 import StatusBar from './StatusBar.jsx'
 
-const OnSuccessfulAdd = ({businessObject, businessId}) => {
- //either call API repeatedly or use Webhooks.
-  const checkStatus = () => {
-    getBusiness(businessId)
-  }
+const BusinessProfile = ({businessObject, setBusinessObject, businessId}) => {
+
+ const checkStatus = () => {
+  getBusiness(businessId, (businessObject) => {
+    setBusinessObject(businessObject)
+  })
+}
+
   const hasBusinessData = businessObject.name.length;
   let status = businessObject.status;
 
@@ -27,4 +30,4 @@ const OnSuccessfulAdd = ({businessObject, businessId}) => {
   );
 }
 
-export default OnSuccessfulAdd;
+export default BusinessProfile;

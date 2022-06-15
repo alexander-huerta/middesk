@@ -1,48 +1,37 @@
 import {API_KEY} from './apiKey.js'
-
-var myHeaders = new Headers();
-myHeaders.append( "Authorization", `Bearer ${API_KEY}}`);
+import {businessObj} from '../sampleData/sampleNewBusiness.js'
 
 var requestOptions = {
   method: 'GET',
   mode: 'no-cors',
-  headers: myHeaders,
-  redirect: 'follow'
+    headers: {
+      'Authorization': `Bearer ${API_KEY}}`
+    },
+    redirect: 'follow'
 };
 
 export const getBusiness = (businessId, cb) => {
-  fetch("https://api-sandbox.middesk.com/v1/businesses/25fa0da7-6de2-4d7c-bbc8-60db0ea31557/", requestOptions)
-    .then((apiResponse) => {
-      cb(apiResponse)
+  fetch(`https://api.middesk.com/v1/businesses/${businessId}`, requestOptions)
+    .then((businessObject) => {
+      // cb(businessObject)
+      cb(businessObj)
     })
-    // .then((businessObject) => {
-    //   console.log(businessObject)
-    //   cb(businessObject)
-    // })
     .catch(error => console.log(error));
   }
 
+  //Gain access to info regarding an existing webook endpoint
 
-  // const axios = require('axios');
-// export const getBusiness = (businessId, cb) => {
-//   var getConfig = {
+// const axios = require('axios');
+// export const getBusiness = (endpointId) => {
+//   var getEndpointConfig = {
 //     method: 'get',
-//     url: `https://api.middesk.com/v1/businesses/${businessId}`,
+//     url: `https://api.middesk.com/v1/webhooks/${endpointId}`,
 //     headers: {
 //       Accept: 'application/json',
 //       Authorization: `Bearer ${API_KEY}}`,
-//       'Access-Control-Allow-Origin': 'http://localhost:3000',
-
 //     },
 //   };
-
-//   axios(getConfig)
-//   .then((apiResponse) => {
-//     console.log('GET RESSSS', apiResponse.data);
-//     return apiResponse.data;
-//   })
-//   .then(() => {
-//     if(cb) cb()
-//   })
+//   axios(getEndpointConfig)
+//   .then(endpointDetails => console.log(endpointDetails));
 //   .catch(error => console.log(error));
 // }
